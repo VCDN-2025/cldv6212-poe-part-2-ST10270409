@@ -1,0 +1,105 @@
+/* ---------- Base / Bootstrap tweaks ---------- */
+html {
+    font-size: 14px;
+}
+
+@media (min-width: 768px) {
+    html {
+        font-size: 16px;
+    }
+}
+
+.btn:focus,
+.btn:active:focus,
+.btn-link.nav-link:focus,
+.form-control:focus,
+.form-check-input:focus {
+    box-shadow: 0 0 0 0.1rem white, 0 0 0 0.25rem #258cfb;
+}
+
+html {
+    position: relative;
+    min-height: 100%;
+}
+
+body {
+    margin-bottom: 60px;
+}
+
+/* Active nav item pops on dark navbar */
+.navbar-dark .nav-link.active {
+    color: #fff !important;
+    font-weight: 600;
+}
+
+/* ---------- Hero section ---------- */
+.hero-landing {
+    min-height: clamp(60vh, 80vh, 88vh);
+    position: relative;
+    padding: 6rem 0;
+    /* Default: gradient only */
+    background: linear-gradient(180deg, rgba(13,110,253,.25), rgba(25,135,84,.25));
+    /* To use an image, replace the line above with:
+  background:
+    linear-gradient(180deg, rgba(13,110,253,.25), rgba(25,135,84,.25)),
+    url('/images/hero-fitness.jpg') center/cover no-repeat fixed;
+  */
+}
+
+    .hero-landing::after {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background: radial-gradient(60% 60% at 50% 40%, rgba(0,0,0,.15), rgba(0,0,0,.45));
+    }
+
+    .hero-landing > .container {
+        position: relative;
+        z-index: 2;
+    }
+
+.hero-title {
+    letter-spacing: .5px;
+    text-shadow: 0 6px 24px rgba(0,0,0,.35);
+}
+
+/* Subtle pill badges under hero */
+.hero-badges .badge {
+    padding: .6rem .9rem;
+    border-radius: 2rem;
+    backdrop-filter: blur(2px);
+}
+
+/* ---------- Instagram-style gallery ---------- */
+.gallery-card {
+    position: relative;
+    border-radius: 12px;
+}
+
+.gallery-img {
+    height: 220px;
+    width: 100%;
+    object-fit: cover;
+    transition: transform .3s ease;
+}
+
+.gallery-card:hover .gallery-img {
+    transform: scale(1.05);
+}
+
+.gallery-overlay {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    background: rgba(0,0,0,.48);
+    opacity: 0;
+    transition: opacity .25s ease;
+}
+
+.gallery-card:hover .gallery-overlay {
+    opacity: 1;
+}
+
+.gallery-overlay .btn {
+    box-shadow: 0 6px 20px rgba(0,0,0,.25);
+}

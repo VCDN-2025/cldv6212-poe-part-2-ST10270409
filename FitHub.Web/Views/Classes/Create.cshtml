@@ -1,0 +1,55 @@
+﻿@model FitHub.Web.Models.ClassEntity
+@{
+    ViewData["Title"] = "Add Class";
+}
+<div class="card shadow-sm">
+    <div class="card-body">
+        <h4 class="card-title mb-3">Add Class</h4>
+        <form asp-action="Create" method="post" enctype="multipart/form-data" class="row g-3 needs-validation" novalidate>
+            @Html.AntiForgeryToken()
+
+            <div class="col-md-6">
+                <label class="form-label">Title</label>
+                <input asp-for="Title" class="form-control" required />
+                <div class="invalid-feedback">Required</div>
+            </div>
+            <div class="col-md-6">
+                <label class="form-label">Trainer</label>
+                <input asp-for="TrainerName" class="form-control" />
+            </div>
+            <div class="col-12">
+                <label class="form-label">Description</label>
+                <textarea asp-for="Description" class="form-control" rows="3"></textarea>
+            </div>
+            <div class="col-md-6">
+                <label class="form-label">Price</label>
+                <input asp-for="Price" class="form-control" type="number" step="0.01" min="0.01" required />
+                <div class="invalid-feedback">Price must be > 0</div>
+            </div>
+            <div class="col-md-6">
+                <label class="form-label">Image (optional)</label>
+                <input class="form-control" type="file" name="image" accept="image/*" />
+            </div>
+
+            <div class="col-12">
+                <button class="btn btn-primary" type="submit">Save</button>
+                <a class="btn btn-outline-secondary" asp-action="Index">Cancel</a>
+            </div>
+        </form>
+    </div>
+</div>
+
+@section Scripts {
+    <script>
+        (() => {
+          'use strict';
+          const forms = document.querySelectorAll('.needs-validation');
+          Array.from(forms).forEach(form => {
+            form.addEventListener('submit', event => {
+              if (!form.checkValidity()) { event.preventDefault(); event.stopPropagation(); }
+              form.classList.add('was-validated');
+            }, false);
+          });
+        })();
+    </script>
+}

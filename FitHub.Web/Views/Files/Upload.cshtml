@@ -1,0 +1,23 @@
+﻿@{
+    ViewData["Title"] = "Upload Image";
+}
+<h2>Upload Image</h2>
+
+<form asp-action="Upload" method="post" enctype="multipart/form-data">
+    @Html.AntiForgeryToken()
+    <div class="mb-3">
+        <input class="form-control" type="file" name="image" accept="image/*" />
+    </div>
+    <button class="btn btn-primary" type="submit">Upload</button>
+    <a class="btn btn-link" asp-action="Index">Back to list</a>
+</form>
+
+@if (!ViewData.ModelState.IsValid)
+{
+    <div class="text-danger mt-3">
+        @foreach (var e in ViewData.ModelState.Values.SelectMany(v => v.Errors))
+        {
+            <div>@e.ErrorMessage</div>
+        }
+    </div>
+}

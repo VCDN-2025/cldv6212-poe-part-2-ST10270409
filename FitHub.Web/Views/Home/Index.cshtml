@@ -1,0 +1,28 @@
+﻿@{
+    ViewData["Title"] = "Home";
+}
+
+<section class="hero-landing d-flex align-items-center text-center text-white">
+    <div class="container">
+        <h1 class="display-3 fw-bold mb-3 hero-title">Welcome to FitHub</h1>
+        <p class="lead mb-4 opacity-75">Your fitness journey starts here 🚀</p>
+
+        <div class="d-flex flex-wrap justify-content-center gap-3">
+            <a class="btn btn-success btn-lg px-4" asp-controller="Files" asp-action="Index">
+                <i class="bi bi-images me-1"></i> Gallery
+            </a>
+            <a class="btn btn-primary btn-lg px-4" asp-controller="Classes" asp-action="Index">
+                <i class="bi bi-collection me-1"></i> Classes
+            </a>
+            <a class="btn btn-outline-light btn-lg px-4" asp-controller="Bookings" asp-action="Create">
+                <i class="bi bi-calendar-check me-1"></i> Bookings
+            </a>
+        </div>
+
+        <div class="hero-badges mt-5 d-flex flex-wrap justify-content-center gap-2">
+            <span class="badge bg-success-subtle text-success border">Azure Blob</span>
+            <span class="badge bg-primary-subtle text-primary border">Azure Tables</span>
+            <span class="badge bg-warning-subtle text-warning border">Azure Queue</span>
+        </div>
+    </div>
+</section>

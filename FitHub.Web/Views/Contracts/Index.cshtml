@@ -1,0 +1,77 @@
+﻿@model List<FitHub.Web.Models.ContractFile>
+@{
+    ViewData["Title"] = "Contracts";
+}
+
+<div class="d-flex justify-content-between align-items-center mb-3">
+    <h2 class="mb-0"><i class="bi bi-file-earmark-text me-2"></i>Contracts</h2>
+    <div class="d-flex gap-2">
+        <a class="btn btn-outline-secondary" asp-action="Seed" title="Insert 5 dummy files">Seed 5</a>
+    </div>
+</div>
+
+@if (TempData["ok"] is string ok)
+{
+    <div class="alert alert-success alert-dismissible fade show">
+        @ok
+        <button class="btn-close" data-bs-dismiss="alert"></button>
+    </div>
+}
+
+<div class="card shadow-sm mb-4">
+    <div class="card-body">
+        <form asp-action="Upload" method="post" enctype="multipart/form-data" class="row g-2">
+            @Html.AntiForgeryToken()
+            <div class="col-md-8">
+                <input class="form-control" type="file" name="file" required />
+            </div>
+            <div class="col-md-4">
+                <button class="btn btn-primary w-100" type="submit">
+                    <i class="bi bi-upload me-1"></i>Upload
+                </button>
+            </div>
+        </form>
+    </div>
+</div>
+
+@if (Model.Count == 0)
+{
+    <div class="text-muted">No contracts yet. Upload a file or click <b>Seed 5</b>.</div>
+}
+else
+{
+    <div class="table-responsive">
+        <table class="table table-hover align-middle">
+            <thead class="table-light">
+                <tr>
+                    <th>Name</th>
+                    <th class="text-end">Size</th>
+                    <th>Last Modified</th>
+                    <th class="text-end">Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var f in Model)
+                {
+                    <tr>
+                        <td>@f.Name</td>
+                        <td class="text-end">@((f.Length / 1024.0).ToString("0.0")) KB</td>
+                        <td>@(f.LastModified?.LocalDateTime.ToString("dd-MMM-yy HH:mm") ?? "-")</td>
+                        <td class="text-end">
+                            <a class="btn btn-sm btn-outline-primary" asp-action="Download" asp-route-name="@f.Name">
+                                <i class="bi bi-download"></i>
+                            </a>
+                            <form asp-action="Delete" method="post" class="d-inline" onsubmit="return confirm('Delete @f.Name ?');">
+                                @Html.AntiForgeryToken()
+                                <input type="hidden" name="name" value="@f.Name" />
+                                <button class="btn btn-sm btn-outline-danger">
+                                    <i class="bi bi-trash"></i>
+                                </button>
+                            </form>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+}

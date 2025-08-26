@@ -1,0 +1,45 @@
+﻿@model List<(string Name, string Url)>
+@{
+    ViewData["Title"] = "Gallery";
+}
+
+<h2 class="mb-4 text-center fw-bold"><i class="bi bi-images me-2"></i>Gallery Preview</h2>
+
+@if (TempData["ok"] != null)
+{
+    <div class="alert alert-success alert-dismissible fade show" role="alert">
+        @TempData["ok"] <button class="btn-close" data-bs-dismiss="alert"></button>
+    </div>
+}
+
+<div class="mb-3 text-end">
+    <a class="btn btn-primary" asp-action="Upload"><i class="bi bi-cloud-upload me-1"></i> Upload Image</a>
+</div>
+
+@if (Model?.Count == 0)
+{
+    <div class="text-center text-muted">No images yet. <a asp-action="Upload">Upload one</a>.</div>
+}
+else
+{
+    <div class="row g-3">
+        @foreach (var item in Model)
+        {
+            <div class="col-6 col-md-4 col-lg-3">
+                <div class="card border-0 shadow-sm overflow-hidden gallery-card">
+                    <img src="@item.Url" class="img-fluid gallery-img" alt="@item.Name" loading="lazy" />
+                    <div class="gallery-overlay d-flex align-items-center justify-content-center gap-2">
+                        <a href="@item.Url" target="_blank" class="btn btn-light btn-sm" title="Open"><i class="bi bi-eye"></i></a>
+                        <a asp-action="Download" asp-route-name="@item.Name" class="btn btn-light btn-sm" title="Download"><i class="bi bi-download"></i></a>
+                        <form asp-action="Delete" method="post" class="d-inline" onsubmit="return confirm('Delete this image?');">
+                            @Html.AntiForgeryToken()
+                            <input type="hidden" name="name" value="@item.Name" />
+                            <button class="btn btn-light btn-sm" type="submit" title="Delete"><i class="bi bi-trash"></i></button>
+                        </form>
+                    </div>
+                </div>
+                <div class="small text-truncate mt-1" title="@item.Name">@item.Name</div>
+            </div>
+        }
+    </div>
+}

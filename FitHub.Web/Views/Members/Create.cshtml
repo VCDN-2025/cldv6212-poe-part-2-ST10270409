@@ -1,0 +1,52 @@
+﻿@model FitHub.Web.Models.MemberEntity
+@{
+    ViewData["Title"] = "Add Member";
+}
+<div class="card shadow-sm">
+    <div class="card-body">
+        <h4 class="card-title mb-3">Add Member</h4>
+        <form asp-action="Create" method="post" class="row g-3 needs-validation" novalidate>
+            @Html.AntiForgeryToken()
+            <div class="col-md-6">
+                <label class="form-label">First name</label>
+                <input asp-for="FirstName" class="form-control" required />
+                <div class="invalid-feedback">Required</div>
+            </div>
+            <div class="col-md-6">
+                <label class="form-label">Last name</label>
+                <input asp-for="LastName" class="form-control" required />
+                <div class="invalid-feedback">Required</div>
+            </div>
+            <div class="col-md-6">
+                <label class="form-label">Email</label>
+                <input asp-for="Email" class="form-control" type="email" required />
+                <div class="invalid-feedback">Valid email required</div>
+            </div>
+            <div class="col-md-6">
+                <label class="form-label">Phone</label>
+                <input asp-for="Phone" class="form-control" />
+            </div>
+            <div class="col-12">
+                <button class="btn btn-primary" type="submit">Save</button>
+                <a class="btn btn-outline-secondary" asp-action="Index">Cancel</a>
+            </div>
+        </form>
+    </div>
+</div>
+
+@section Scripts {
+    <script>
+        (() => {
+          const forms = document.querySelectorAll('.needs-validation');
+          Array.from(forms).forEach(f => f.addEventListener('submit', e => {
+            if (!f.checkValidity()) { e.preventDefault(); e.stopPropagation(); }
+            f.classList.add('was-validated');
+          }, false));
+        })();
+    </script>
+}
+@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}

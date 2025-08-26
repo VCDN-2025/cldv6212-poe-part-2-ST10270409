@@ -1,0 +1,40 @@
+﻿@{
+    ViewData["Title"] = "Create Booking";
+    var members = (List<FitHub.Web.Models.MemberEntity>)ViewBag.Members;
+    var classes = (List<FitHub.Web.Models.ClassEntity>)ViewBag.Classes;
+}
+<div class="card shadow-sm">
+    <div class="card-body">
+        <h4 class="card-title mb-3">Create Booking</h4>
+        <form asp-action="Create" method="post" class="row g-3">
+            @Html.AntiForgeryToken()
+
+            <div class="col-md-6">
+                <label class="form-label">Member</label>
+                <select class="form-select" name="memberId" required>
+                    <option value="">-- select member --</option>
+                    @foreach (var m in members)
+                    {
+                        <option value="@m.RowKey">@m.FirstName @m.LastName (@m.Email)</option>
+                    }
+                </select>
+            </div>
+
+            <div class="col-md-6">
+                <label class="form-label">Class</label>
+                <select class="form-select" name="classId" required>
+                    <option value="">-- select class --</option>
+                    @foreach (var c in classes)
+                    {
+                        <option value="@c.RowKey">@c.Title - R @c.Price.ToString("0.00")</option>
+                    }
+                </select>
+            </div>
+
+            <div class="col-12">
+                <button class="btn btn-primary" type="submit">Confirm Booking</button>
+                <a class="btn btn-outline-secondary" asp-action="Create">Reset</a>
+            </div>
+        </form>
+    </div>
+</div>
