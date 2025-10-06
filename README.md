@@ -1,1 +1,12 @@
-[![Review Assignment Due Date](https://classroom.github.com/assets/deadline-readme-button-22041afd0340ce965d47ae6ef1cefeee28c7c493a6346c4f15d667ab976d596c.svg)](https://classroom.github.com/a/sbrQILlA)
+# CLDV6212 – POE Part 2 (ST10270409)
+
+Deployed MVC: https://<your-mvc-app>.azurewebsites.net  
+Function App: https://cloudpoepart2st10270409lg.azurewebsites.net
+
+## What’s in this repo
+- MVC: `FitHub.Web` (+ `/Part2` page to call Azure Functions)
+- Functions: `Products_Create`, `Blobs_UploadFromUrl`, `Queue_Enqueue`, `WriteFileShare`
+
+## Config (kept out of code)
+- ConnectionStrings:AzureStorage (App Service)
+- AzureFunctions:* URLs and AzureFunctions:Key (App Service)
