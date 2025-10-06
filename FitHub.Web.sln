@@ -5,6 +5,8 @@ VisualStudioVersion = 17.13.35825.156
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FitHub.Web", "FitHub.Web\FitHub.Web.csproj", "{74759EBD-F53B-4B71-8E4A-58622953076D}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AbcRetail.Functions", "AbcRetail.Functions\AbcRetail.Functions.csproj", "{FBBB2263-DAFB-4077-93E0-03D6A0A2A2AF}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{74759EBD-F53B-4B71-8E4A-58622953076D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{74759EBD-F53B-4B71-8E4A-58622953076D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{74759EBD-F53B-4B71-8E4A-58622953076D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FBBB2263-DAFB-4077-93E0-03D6A0A2A2AF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FBBB2263-DAFB-4077-93E0-03D6A0A2A2AF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FBBB2263-DAFB-4077-93E0-03D6A0A2A2AF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FBBB2263-DAFB-4077-93E0-03D6A0A2A2AF}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

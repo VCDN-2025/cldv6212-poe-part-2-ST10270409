@@ -1,0 +1,54 @@
+﻿@{
+    ViewData["Title"] = "Part 2 – Function Tests";
+}
+
+<div class="container py-4">
+    <h2 class="mb-3">Part 2 – Azure Functions Tests</h2>
+    <p class="text-muted">Click a button to call the Function via MVC. After each call, check Azure resources and take screenshots.</p>
+
+    <div class="row g-3">
+        <div class="col-md-6">
+            <div class="card p-3">
+                <h5>1) Table – Products_Create</h5>
+                <a class="btn btn-primary" href="@Url.Action("SeedProduct")">Run</a>
+                <div class="mt-2 small text-monospace">
+                    @TempData["SeedProduct"]
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-6">
+            <div class="card p-3">
+                <h5>2) Blob – Blobs_UploadFromUrl</h5>
+                <a class="btn btn-primary" href="@Url.Action("UploadBlob")">Run</a>
+                <div class="mt-2 small text-monospace">
+                    @TempData["UploadBlob"]
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-6">
+            <div class="card p-3">
+                <h5>3) Queue – Queue_Enqueue</h5>
+                <a class="btn btn-primary" href="@Url.Action("Enqueue")">Run</a>
+                <div class="mt-2 small text-monospace">
+                    @TempData["Enqueue"]
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-6">
+            <div class="card p-3">
+                <h5>4) File Share – WriteFileShare</h5>
+                <a class="btn btn-primary" href="@Url.Action("WriteFile")">Run</a>
+                <div class="mt-2 small text-monospace">
+                    @TempData["WriteFile"]
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="mt-4">
+        <a class="btn btn-success" href="@Url.Action("RunAll")">Run All (1→4)</a>
+    </div>
+</div>
